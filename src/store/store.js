@@ -25,6 +25,12 @@ export default new Vuex.Store({
     },
     enviandoJuegos(state){
       return state.juegos;
+    },
+    filtroJuego: (state) => (codigo) => {
+      return state.juegos.filter( producto => producto.codigo == codigo );
+    },
+    totalJuegos (state){
+      return state.juegos.length;
     }
   },
   mutations: {
