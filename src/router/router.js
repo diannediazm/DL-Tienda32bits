@@ -24,6 +24,11 @@ const routes = [
     path: '/total',
     name: 'Total',
     component: () => import('../views/Total.vue')
+  },
+  {
+    path: '/*',
+    name: 'Error',
+    component: () => import('../views/Error.vue')
   }
 ]
 

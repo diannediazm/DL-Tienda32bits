@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Swal from 'sweetalert2';
 
 Vue.use(Vuex);
 
@@ -31,10 +32,33 @@ export default new Vuex.Store({
     },
     totalJuegos (state){
       return state.juegos.length;
-    }
+    },
+    enviandoStock(state) {
+      return state.juegos.filter(producto=> producto.stock > 0);
+    },
+    
   },
   mutations: {
+    restaStock(state, index){
+      if (state.juegos[index].stock > 0) {
+        state.juegos[index].stock--;
+      } else {
+        state.juegos[index].disponible = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se puede disminuir el inventario',
+          footer: 'Intenta con otro producto'
+        })
+      }      
+      if (state.juegos[index].stock == 0) {
+        state.juegos[index].disponible = false;
+      }
+    },
   },
   actions: {
+    menorStock(context, index){
+      context.commit('restaStock', index);
+    }
   }  
 })
