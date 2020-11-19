@@ -18,7 +18,7 @@
                     <td>{{item.nombre}}</td>
                     <td>{{item.stock}}</td>
                     <td>$ {{item.precio}}</td>
-                    <td><input type="button" class="btn btn-danger" value="Vender" @click="vender(index)"></td>
+                    <td><button class="btn btn-danger" @click="vender(index)">Vender</button></td>
                 </tr>
             </tbody>
             </table>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 
 export default {
     name: 'ListaVentas',
@@ -36,14 +37,14 @@ export default {
         stockJuegos(){
             return this.$store.getters.totalJuegos;
         },
+    },
     methods: {
-        vender(index){
-            this.$store.dispatch('menorStock',index);
+        ...mapActions(['vender'])
+        /*vender(index){
+            this.$store.dispatch('vender',index);
 
-        }
+        }*/
     },
-    },
-   
 }
 </script>
 

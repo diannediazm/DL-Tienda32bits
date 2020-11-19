@@ -57,7 +57,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    menorStock(context, index){
+    vender(context, index){
       context.commit('restaStock', index);
     }
   }  
