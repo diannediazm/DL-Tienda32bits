@@ -36,7 +36,16 @@ export default new Vuex.Store({
     enviandoStock(state) {
       return state.juegos.filter(producto=> producto.stock > 0);
     },
-    
+    ventasRegistradas(state) {
+      return state.juegos.reduce((acumulador,valor) => {
+        return acumulador + valor.stock;
+      },0);
+    },
+    totalVentas(state) {
+      return state.juegos.reduce((acumulador,valor) => {
+        return acumulador + (valor.precio*valor.stock);
+      },0);
+    },
   },
   mutations: {
     restaStock(state, index){

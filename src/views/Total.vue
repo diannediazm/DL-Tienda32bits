@@ -1,14 +1,16 @@
 <template>
     <div class="text-center mt-5">
-        <h1>Listado de ventas registradas</h1>
         <ventas-realizadas></ventas-realizadas>
-        <h1>Monto total de ventas</h1>
     </div>
 </template>
 
 <script>
+import VentasRealizadas from '../components/VentasRealizadas.vue'
 export default {
-    
+    name: 'Total',
+    components: {
+        VentasRealizadas,
+    }
 }
 </script>
 

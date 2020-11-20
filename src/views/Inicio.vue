@@ -1,22 +1,24 @@
 <template>
   <div class="background">
     <div class="messages">
-      <h1>{{traerMessage1}}</h1>
-      <h2>{{traerMessage2}}</h2>
+      <h1>{{enviandoMessage1}}</h1>
+      <h2>{{enviandoMessage2}}</h2>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: 'Inicio',
   computed: {
-    traerMessage1(){
+    ...mapGetters(['enviandoMessage1', 'enviandoMessage2'])
+    /*traerMessage1(){
       return this.$store.getters.enviandoMessage1;
     },
     traerMessage2(){
       return this.$store.getters.enviandoMessage2;
-    }
+    }*/
   }
 }
 </script>
